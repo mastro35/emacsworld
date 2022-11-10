@@ -1,5 +1,6 @@
 ---
 Title: Bootstrapping Emacs World
+Author: mastro35
 Tags: bootstrap, emacsworld
 Category: EmacsWorld
 ---
