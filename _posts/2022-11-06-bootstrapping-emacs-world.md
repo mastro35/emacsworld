@@ -1,7 +1,7 @@
 ---
 title: Bootstrapping Emacs World
 author: mastro35
-tags: bootstrap, emacsworld
+tags: bootstrap emacsworld
 category: EmacsWorld
 share: true
 layout: post
