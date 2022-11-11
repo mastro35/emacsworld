@@ -1,9 +1,10 @@
 ---
-Title: Bootstrapping Emacs World
-Author: mastro35
-Tags: bootstrap, emacsworld
-Category: EmacsWorld
-Share: true
+title: Bootstrapping Emacs World
+author: mastro35
+tags: bootstrap, emacsworld
+category: EmacsWorld
+share: true
+layout: post
 ---
 
 Hi guys,
