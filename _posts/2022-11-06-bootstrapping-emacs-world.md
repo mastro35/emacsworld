@@ -33,9 +33,10 @@ Nothing else.
 
 And there was no Internet or anything like that. To learn how to use a computer you had to consult books at the local library, share your experiences with other kids and go to a kiosk to buy monthly publications that listed several programs that you could copy by hand and try to execute despite the typos and the mistakes you inevitably make when copying hundreds of code line by hand (click [here](https://www.edicola8bit.com/sfoglia_rivista.php?collana=paper_soft&id=10&console=#page/19) to have an example of what I am talking about). 
 
-All this effort seems ridiculous in 2022, when you have real OS, modern programming languages, and tons of documentation, videos and tutorials that you can download from the Internet with a click, but all that effort with thousand of try-and-fail experiment and all the hours spent trying to figure out how that machine works were so educational for us. Every day we learned something new. 
+Yes, this seems ridiculous in 2022, when you have real OS, modern programming languages, and tons of documentation, videos and tutorials that you can download from the Internet with a click, but all that effort with thousand of try-and-fail experiment and all the hours spent trying to figure out how that machine works were so educational for us. 
+Every day we learned something new. 
 
-And yet, Emacs reminds me of that experience, you are greeted by a scratch buffer and the old blinking cursor and all you have to do is communicate with your interpreter (this time an Elisp interpreter) and enjoy, knowing that at the end of the day you have learned something new. 
+And Emacs reminds me of that experience, you are greeted by a scratch buffer and the old blinking cursor and all you have to do is communicate with your interpreter (this time an Elisp interpreter) and enjoy, knowing that at the end of the day you'll have learned something new. 
 That's why I love it. And that's why this website exists.
 
 See you soon, 
