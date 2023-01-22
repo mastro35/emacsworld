@@ -1,0 +1,120 @@
+---
+Title: Asking for help in Emacs
+Tags: help, documentation, Emacs
+Category: help
+---
+
+Uno degli aspetti più interessanti di Emacs è il fatto di essere completamente auto documentato. Che tu sia un principiante o meno, chiedere aiuto su funzionalità, combinazioni di tasti, variabili o funzioni sarà una delle cose di cui prima o poi avrai bisogno e proprio in quel momento avere davanti a te un editor che può aiutarti a risolvere il tuo problema si rivelerà molto utile. 
+
+Proprio per questo motivo è importante conoscere bene come funziona la documentazione di Emacs e come utilizzarla al meglio.
+
+## Il tutorial
+
+Se siete dei principianti di Emacs o non lo avete mai utilizzato probabilmente la prima cosa che vorrete sarà sicuramente un *tutorial*, ovvero una guida che vi introduca in modo semplice e veloce all'interno del mondo di Emacs e che non vi richieda di leggere centinaia di pagine di manuale prima di poter aprire un file, modificarlo e salvarlo.
+
+Nel 2023 probabilmente quando sentite la parola *tutorial* la prima cosa che vi viene in mente è YouTube, ma in realtà all'interno di Emacs esiste già un tuttorial interattivo e perfettamente funzionante che vi permetterà in pochissimo tempo di prendere confidenza con lo strumento e iniziare a fare i vostri primi passi con Emacs.
+
+Per accedere al tutorial basta premere `C-h t` ed il gioco è fatto. Uscendo dal tutorial si potrà anche scegliere di salvare la posizione a cui si è arrivati così da poterlo completare in un momento diverso qualora il tempo a disposizione non vi permetta di concluderlo in una sola sessione.
+
+In linea generale, un giro sul tutorial è bene che lo facciano tutti almeno una volta nella vita, se non altro per imparare la terminologia standard di Emacs, che come noterete è piuttosto differente da quella a cui sarete probabilmente abituati. 
+
+Difficilmente sentirete parlare di *cursore*, molto più spesso vi troverete a parlare di *punto*. Allo stesso modo scoprirete che una *finestra* in Emacs prende il nome di *frame* e che il termine *finestra* è invece utilizzato per un concetto leggermente diverso (è una porzione dello schermo all'interno di un singolo *frame*). Il motivo per cui concetti noti ai più con un nome si ritrovano in Emacs con termini differenti può apparire uno strano vezzo dei programmatori ma in realtà non è così, ha ragioni ben più profonde che riguardano il fatto che Emacs nasce nel 1976, ben prima che i concetti noti di cui parliamo avessero nomi altrettanto noti. E così alcuni di questi concetti sono nati in Emacs e poi si sono diffusi con nomi differenti in altri ambiti.
+
+Infine, farete la conoscenza di alcuni concetti che sono quasi unici all'interno di Emacs, come il concetto stesso di *buffer* su cui Emacs è fortamente basato e che è profondamente differente da quello di *file* su cui si basano gli editor tradizionali. 
+
+## La documentazione standard
+
+Pensate ad un oggetto qualsiasi, qualcosa tipo un elettrodomestico o magari l'ultimo mobile svedese che avete portato a casa e che dovrete montarvi da soli. All'interno della confezione avete probabilmente trovato un manuale, più o meno dettagliato a seconda di quanto richiesto, giuto?
+
+Bhe, la stessa cosa accade con Emacs. Il software è corredato di un manuale che è disponibile all'interno del software stesso. 
+
+Per poter accedere al manuale ufficiale dall'interno di Emacs vi basterà digitare la combinazione di tasti `C-h r` ed il manuale ufficiale apparirà in un buffer dedicato e *read-only*.
+
+Bello, non è vero?
+
+## Tre aiuti indispensabili
+
+Una volta arrivati ad una certa confidenza con Emacs non avrete più bisogno del tutorial e forse accederete al manuale solo di rado. Ma le situazioni in cui vi capiterà di chiedere aiuto ci saranno sempre, magari solo per sapere che cosa fa un certo comando o guardare la definizione di una funzione. E proprio in questi momenti ci saranno tre comandi che saranno vostri alleati e che vi permetteranno di uscire dai guai rapidamente. 
+
+Il primo dei tre comandi è il comando `describe-key`, che vi permetterà di sapere a che cosa serve una specifica combinazione di tasti. Per eseguire il comando basta digitare `C-h k`, emacs vi chiederà di digitare la combinazione di tasti per cui volete richiedere aiuto e vi fornirà le informazioni rispetto a quella specifica funzione. 
+
+Ad esempio, se dopo aver digitato `C-h k` premete `C-h r` Emacs vi mostrerà una descrizione del comando che richiama il manuale di Emacs (come abbiamo detto in precedenza).
+
+```
+C-h r runs the command info-emacs-manual (found in global-map), which
+is an autoloaded interactive byte-compiled Lisp function in ‘info.el’.
+
+It is bound to C-h r, <f1> r, <help> r, <menu-bar> <help-menu>
+<emacs-manual>.
+
+(info-emacs-manual)
+
+Display the Emacs manual in Info mode.
+
+[back]
+```
+
+Un altro comando veramente comodo e di grande aiuto è il comando `describe-function`, che vi permette di sapere a cosa serve una specifica funzione. Anche questo comando è richiamabile attraverso una comoda combinazione di tasti, `C-h f` e dopo aver richiamato questo comando sarà sufficiente scrivere il nome della funzione di cui volete conoscere il funzionamento. 
+
+Ad esempio, provate a richiamare il comando e successivamente a inserire il nome della funzione `info-emacs-manual`, che abbiamo già visto essere la funzione per richiamare il manuale di Emacs e riceverete questa risposta:
+
+```
+info-emacs-manual is an autoloaded interactive byte-compiled Lisp
+function in ‘info.el’.
+
+It is bound to C-h r, <f1> r, <help> r, <menu-bar> <help-menu>
+<emacs-manual>.
+
+(info-emacs-manual)
+
+Display the Emacs manual in Info mode.
+
+[back]
+```
+
+Come potete vedere Emacs vi darà informazioni sulla funzione e anche sulla combinazione di tasti ad essa associati (molto utile quando vi ricordate il nome della funzione ma non la combinazione cha la richiama).
+
+Infine, l'ultima funzione da conoscere è la `describe-variable` che a questo punto è facile immaginare a cosa possa servire. Dato un nome di variabile, la funzione vi mostra il significato di quella variabile ed il suo utilizzo.
+
+Per esempio, provate a richiamare questo comando ed inserite il nome di variabile `command-line-functions` per sapere a cosa serve questa particolare variabile:
+
+```
+command-line-functions is a variable defined in ‘startup.el’.
+
+Its value is nil
+
+List of functions to process unrecognized command-line arguments.
+Each function should access the dynamically bound variables
+‘argi’ (the current argument) and ‘command-line-args-left’ (the remaining
+arguments).  The function should return non-nil only if it recognizes and
+processes ‘argi’.  If it does so, it may consume successive arguments by
+altering ‘command-line-args-left’ to remove them.
+
+  This variable may be risky if used as a file-local variable.
+  Probably introduced at or before Emacs version 19.23.
+
+[back]
+```
+
+Ci sono poi altri tasti simili ed estremamente interessanti, come il `describe-mode` che vi dà informazioni sul *major* e sui *minor modes* attivi nel buffer corrente o il `describe-symbol` che accetta il nome di un simbolo e ve ne restituisce il significato ma quelli appena citati sono sicuramente i tre più utilizzati.
+
+## Apropos
+
+Quando anche sul tipo di richiesta che vogliamo fare non siamo troppo sicuri, il comando che ci viene in aiuto è invece `apropos`. Questo comando, invocabile attraverso `M-x apropos` mostra tutti i simboli Lisp il cui nome si abbina ad un input dato, che può essere una lista di parole o un'espressione regolare. 
+
+Ad esempio, se non sapete come vedere la lista dei buffer, provate a richiamare `apropos` e ad inserire come input `list buffers`. Vi usciranno diversi risultati all'interno dei quali troverete la soluzione alla vostra necessità.
+
+## Altre risorse in rete
+
+Oltre alle numerose risorse che vi offre lo stesso Emacs, ovviamente c'è un'infinità di documentazione anche in rete. Elencarle tutte mi sembra poco utile, ma sicuramente un elenco delle principali non può mancare in un articolo come questo.
+
+Anzitutto non si può prescindere dal [sito ufficiale](https://www.gnu.org/software/emacs/), che è ovviamente la prima fonte di informazione da tenere sempre in considerazione. All'interno di questo sito troverete anche i link al [manuale introduttivo alla programmazione in elisp](https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html), lettura fondamentale se volete proseguire oltre e iniziare a fare sul serio con Elisp. 
+Sempre relativamente ad Elisp c'è poi il [manuale di riferimento](https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html) anch'esso un must-read.
+
+Spostandoci sui siti degli appassionati non va dimenticato il sito di [Sacha Chua](https://sachachua.com/blog/) che è una vera e propria miniera di informazioni ed il [Xah Emacs Blog](http://xahlee.info/emacs/emacs/blog.html) che a dispetto di come appare è un sito dagli ottimi contenuti.
+
+Ultima menzione per un libro vero: [Mastering Emacs](https://www.masteringemacs.org_) un libro pratico e semplice che vi guiderà all'interno del mondo di Emacs spiegandovi anche le motivazioni e la filosofia che sta alla base di questo fantastico editor.
+
+## In conclusione
+
+La curva di apprendimento di Emacs può inizialmente sembrare un po' ripida ma non penso di poter essere in grado di dirvi a parole quanto ne valga veramente la pena. Emacs è un viaggio in cui la destinazione è secondaria, perchè la vera magia sta nel fatto di viaggiare.
