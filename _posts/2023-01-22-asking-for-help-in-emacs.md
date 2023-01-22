@@ -7,6 +7,8 @@ Share: true
 Layout: post
 ---
 
+![Manual Override](https://imgs.xkcd.com/comics/manual_override.png)
+
 One of the most interesting aspects of Emacs is the fact that it is completely self-documented. Whether you are a beginner or not, asking for help on functionality, key chords, variables or functions will be one of the things you will need sooner or later, and having an editor in front of you who can help you solve your problem will prove very useful. 
 
 This is precisely why it is important to be familiar with Emacs and its self-documentiong feature.
