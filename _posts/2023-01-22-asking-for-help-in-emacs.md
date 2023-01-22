@@ -1,10 +1,10 @@
 ---
-Title: Asking for help in Emacs
-Tags: help, documentation, Emacs
-Category: help
-Author: mastro35
-Share: true
-Layout: post
+title: Asking for help in Emacs
+tags: help, documentation, Emacs
+category: help
+author: mastro35
+share: true
+layout: post
 ---
 
 ![Manual Override](https://imgs.xkcd.com/comics/manual_override.png)
