@@ -1,6 +1,6 @@
 ---
 title: Asking for help in Emacs
-tags: help, documentation, Emacs
+tags: help documentation Emacs
 category: help
 author: mastro35
 share: true
