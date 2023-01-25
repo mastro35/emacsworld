@@ -121,7 +121,7 @@ Also related to Elisp is the [reference manual](https://www.gnu.org/software/ema
 
 Moving on to the sites of enthusiasts, we must not forget the site of [Sacha Chua](https://sachachua.com/blog/), which is a veritable mine of information, and the [Xah Emacs Blog](http://xahlee.info/emacs/emacs/blog.html), which, despite its appearance, is a site with excellent content.
 
-Last mention for a real book: [Mastering Emacs](https://www.masteringemacs.org_) a practical and simple book that will guide you through the world of Emacs, also explaining the motivations and philosophy behind this fantastic editor.
+Last mention for a real book: [Mastering Emacs](https://www.masteringemacs.org) a practical and simple book that will guide you through the world of Emacs, also explaining the motivations and philosophy behind this fantastic editor.
 
 ## In conclusion
 
