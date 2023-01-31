@@ -17,7 +17,7 @@ Wait... what? Anyone? Um, okay, okay... it also applies to those who use Google 
 
 Okay, now here we go, you all have your hand up, right?
 
-![Refresh Types](https://imgs.xkcd.com/comics/refresh_types.png) {: .align-center}
+![Refresh Types](https://imgs.xkcd.com/comics/refresh_types.png){: .align-center}
 
 ## Muscle memory
 
