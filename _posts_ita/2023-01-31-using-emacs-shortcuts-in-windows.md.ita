@@ -1,0 +1,149 @@
+---
+title: Using emacs shortcuts in Windows
+tags: shortcuts Emacs Windows
+category: tips&tricks
+author: mastro35
+share: true
+layout: post
+---
+
+State lavorando in Emacs da diverse ore, magari programmando in Elisp, quando esce un messaggio di errore che non conoscete e su cui volete maggiori informazioni.
+Certo, sapete bene che [esiste la possibilità di chiedere aiuto direttamente ad Emacs](https://emacsworld.com/help/2023/01/22/asking-for-help-in-emacs.html) nella maggior parte dei casi, ma in questo caso specifico decidete di fare una ricerca su un motore di ricerca. 
+In un attimo copiate il messaggio di errore che vi è apparso tramite la combinazione di tasti `M-w` e poco dopo aprite il vostro browser preferito e nella barra di ricerca di *Bing* premete `C-y` per incollare
+il messaggio di errore e far partire la ricerca, ma ovviamente non accade nulla. 
+
+Alzate la mano se è successo anche voi almeno un migliaio di volte! 
+
+Come? Nessuno? Ehm... ok, vale anche per chi usa Google al posto di Bing...
+
+Ok, ora ci siamo, avete tutti la mano alzata, giusto?
+
+![Refresh Types](https://imgs.xkcd.com/comics/refresh_types.png) {: .align-center}
+
+## La memoria muscolare
+
+In inglese si chiama *memoria muscolare*, accade quando hai consolidato un movimento per anni e questo movimento è diventato talmente automatico che di fatto non hai più alcun bisogno di pensarci per poterlo ripetere. 
+Il muscolo di fatto risponde automaticamente all'input inviato dal cervello, quasi come se avesse una memoria in sè, ma in questo caso è troppo frettoloso, non si accorge che abbiamo cambiato ambito e che in Windows il comando per incollare del testo non è `C-y` bensì `C-v`. Da quì l'errore e la frustrazione che ne deriva (a me solitamente ci vuole qualche secondo prima di capire cosa non ha funzionato e ripetere la combinazione di tasti corretta).
+
+Come si pùo risolvere questo problema e fare in modo che la memoria muscolare risponda con la combinazione di tasti corretta a seconda della finestra attiva? 
+Semplice, non si può!
+
+Però si può fare qualcosa di più furbo, come ad esempio insegnare a Windows che quando premiamo `C-y` vogliamo incollare del testo e non premere due tasti a caso tanto per perdere tempo... ;)
+
+## AutoHotkey
+
+Ci viene in salvo una piccola utility per Windows chiamata [AutoHotkey](https://www.autohotkey.com/).
+AutoHotkey è un linguaggio di scripting gratuito e open source per Windows che permette di creare delle automazioni per il sistema operativo di Redmond assegnandole a combinazioni di tasti specifiche.
+
+Nel nostro caso, quindi, basterà installare AutoHotkey (il processo di installazione è piuttosto semplice: scaricate il programma, doppio click sull'installer e poi cliccare sempre *Avanti*) e creare un nuovo script che rimappi le combinazioni di tasti volute. 
+
+Nel mio caso, ho rimappato i comandi per usare la clipboard (taglia, copia ed incolla), il comando `C-k` per rimuovere il resto di una riga di testo e salvarlo nella clipboard e la combinazione di default per l'annullamento di una modifica con il seguente script.
+
+```
+#InstallKeybdHook
+#UseHook
+
+; The following line is a contribution of NTEmacs wiki http://www49.atwiki.jp/ntemacs/pages/20.html
+SetKeyDelay 0
+
+
+; Applications you want to disable emacs-like keybindings
+; (Please comment out applications you don't use)
+is_target()
+{
+   IfWinActive,ahk_class Emacs ; NTEmacs
+     Return 1  
+   IfWinActive,ahk_class Emacsclient ; emacsclient
+     Return 1
+  Return 0
+}
+
+kill_line()
+{
+  Send {ShiftDown}{END}{SHIFTUP}
+  Sleep 50 ;[ms] this value depends on your environment
+  Send ^x
+  global is_pre_spc = 0
+  Return
+}
+
+kill_region()
+{
+  Send ^x
+  Return
+}
+
+kill_ring_save()
+{
+  Send ^c
+  Return
+}
+
+yank()
+{
+  Send ^v
+  Return
+}
+
+undo()
+{
+  Send ^z
+  Return
+}
+
+^k::
+  If is_target()
+    Send %A_ThisHotkey%
+  Else
+    kill_line()
+  Return
+
+^w::
+  If is_target()
+    Send %A_ThisHotkey%
+  Else
+    kill_region()
+  Return
+
+!w::
+  If is_target()
+    Send %A_ThisHotkey%
+  Else
+    kill_ring_save()
+  Return
+
+^y::
+  If is_target()
+    Send %A_ThisHotkey%
+  Else
+    yank()
+  Return
+
+^/::
+  If is_target()
+    Send %A_ThisHotkey%
+  Else
+    undo()
+  Return
+```
+
+Lo script può essere salvato con il nome che si vuole ma è importante che l'estensione sia `.ahk`, quindi nel mio caso l'ho chiamato `Emacs.ahk`. 
+È anche possibile mappare molti più comandi di Emacs ed infatti quanto sto presentando oggi qui su questo blog è in realtà una mia versione ridotta di uno script di [Naoki Ishikawa](http://ishikawa.cc) che potete trovare [qui](https://github.com/usi3/emacs.ahk), 
+e che contiene molti più shortcuts ma il mio consiglio è quello di rimappare solo i più comuni e quelli dove effettivamente la memoria muscolare può creare un problema. 
+Nello script di Naoki, ad esempio, si rimappa anche il tasto `C-x C-c` per chiudere una finestra qualsiasi ma a me non è mai accaduto di provare a chiudere una finestra usando questo comando... insomma, in questo caso è questione di gusti e di trovare la misura migliore per ognuno, quindi se volete potete scaricare la versione completa di Naoki e iniziare a giocarci per capire cosa volete rimappare e cosa no.
+
+## Eseguire lo script all'avvio di Windows
+
+Se dopo aver provato lo script proposto anche voi come me non potrete mai più farne a meno, vi invito ad installarlo affinchè parta automaticamente con Windows. 
+Per fare questo, premete la combinazione di tasti `Start-r`, digitate `shell:startup` e cliccate su `OK`. 
+Vi dovrebbe apparire la finestra contenente i programmi che vengono eseguiti all'avvio da Windows, tipicamente qualcosa tipo `C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`.
+Spostate il vostro script in questo percorso ed il gioco è fatto.
+
+## In conclusione
+
+In questo articolo abbiamo visto come si possono risolvere molti dei problemi dettati dalla memoria muscolare associata agli shortcuts della clipboard di Windows senza bisogno di attivare la modalità `CUA` in Emacs (cosa che personalmente odio).
+
+In un prossimo articolo faremo una cosa analoga ma questa volta dedicata agli utenti di MacOS (io stesso sono prevalentemente un utente Mac).
+
+Per il momento è tutto, a presto e... happy hacking con Emacs!
+D.
