@@ -61,4 +61,8 @@ plugins:
 
 skin: "/assets/css/skins/dark.css"
 
-
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-BCMJYHSL8P"
+    anonymize_ip: true # default
