@@ -64,5 +64,5 @@ skin: "/assets/css/skins/dark.css"
 analytics:
   provider: "google-gtag"
   google:
-    tracking_id: "G-BCMJYHSL8P"
+    tracking_id: "GTM-T5VKHWR"
     anonymize_ip: true # default
