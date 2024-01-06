@@ -35,7 +35,7 @@ logo: /assets/img/logo.png
 # remote_theme: luxedo/jekyll-theme-potato-hacker
 # remote_theme: riggraz/no-style-please
 remote_theme: "mmistakes/so-simple-theme@3.2.0"
-color_scheme: emacsworld
+# theme: jekyll-theme-so-simple
 
 plugins:
   - jekyll-feed
